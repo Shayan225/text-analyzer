@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "textstyle/wsgi.py",
+      "use": "@vercel/python",
+      "config": { "maxLambdaSize": "15mb" ,  "runtime": "python 3.11.1" }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "https://your-django-api-url.com/api/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "textstyle/wsgi.py"
+    }
+  ]
+}
