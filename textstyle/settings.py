@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-k%8g08*bnj^ab4q^htks_!qv=0@67##!#hxdqvsmrj$!69q)-s
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app']
+ALLOWED_HOSTS = ['http://textanalyzer.com/']
 
 
 # Application definition
@@ -122,7 +122,12 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS =( os.path.join(BASE_DIR , "static"),)
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR , "static"),
+]
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+STATICFILES_EXCLUDE_PATTERNS = ['*.map']
+
 #added for heroku
 django_heroku.settings(locals())
 
